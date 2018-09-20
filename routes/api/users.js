@@ -10,13 +10,7 @@ const passport = require("passport");
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 
-// @route   GET api/users/test
-// @desc    Tests users/auth route
-// @access  Public
-router.get("/test", (req, res) => res.json({ msg: "Users test working" }));
-//router.get('/register', (req, res) => res.json({ msg: 'Users reg working' }))
-
-// @route   GET api/users/register
+//! @route   GET api/users/register
 // @desc    Register user
 // @access  Public
 router.post("/register", (req, res) => {
@@ -27,9 +21,7 @@ router.post("/register", (req, res) => {
     return res.status(400).json(errors);
   }
 
-  const users = DB.collection("users");
-  users
-    .findOne({ email: req.body.email })
+  DBusers.findOne({ email: req.body.email })
     .then(user => {
       if (user) {
         errors.email = "Email already exists";
@@ -65,21 +57,19 @@ router.post("/register", (req, res) => {
       newUser.password = hash;
     });
   });
-  users
-    .insertOne(newUser)
+  DBusers.insertOne(newUser)
     .then(user => res.json(user))
     .catch(err => console.log.err);
 });
 
-// @route   GET api/users/login
+//! @route   GET api/users/login
 // @desc    Login user / Returns JWT token
 // @access  Public
 router.post("/login", (req, res) => {
   const email = req.body.email;
   const pwd = req.body.password;
 
-  const users = DB.collection("users");
-  users.findOne({ email }).then(user => {
+  DBusers.findOne({ email }).then(user => {
     if (!user) {
       // NOT FOUND
       return res.status(404).json({ email: "User not found" });
@@ -105,7 +95,7 @@ router.post("/login", (req, res) => {
           token: "Bearer " + token
         });
       }); // 3600 = 1 hour
-      console.log(token);
+      //console.log(token);
     } else {
       return res.status(400).json({ password: "Password incorrect" });
     }
@@ -113,7 +103,7 @@ router.post("/login", (req, res) => {
   });
 });
 
-// @route   GET api/users/current
+//! @route   GET api/users/current
 // @desc    Return curr user
 // @access  Private
 router.get(
@@ -123,4 +113,6 @@ router.get(
     res.json({ User: req.user.name, Email: req.user.email });
   }
 );
+
+//###
 module.exports = router;
