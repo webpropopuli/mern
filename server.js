@@ -51,7 +51,7 @@ console.log("DEVCONNECT: Middleware established");
 }
 
 // Setup port and listen
-const port = process.env.port || 5000;
+const port = process.env.port || 5001;
 
 app.listen(port, () =>
   console.log(`DEVCONNECT: waiting for you on port ${port}`)
