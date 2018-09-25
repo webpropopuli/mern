@@ -1,6 +1,6 @@
 {
   "name": "wpp-connect",
-  "version": "2.0.1",
+  "version": "2.0.0",
   "description": "wpp Social app",
   "main": "server.js",
   "scripts": {
