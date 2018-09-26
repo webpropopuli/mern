@@ -10,8 +10,8 @@ class Register extends Component {
     this.state = {
       name: '',
       email: '',
-      pwd: '',
-      pwd2: '',
+      password: '',
+      password2: '',
       errors: {}
     }
   }
@@ -45,12 +45,12 @@ class Register extends Component {
                 </div>
                 <div className="form-group">
                   <input type="password" className="form-control form-control-lg" placeholder="Password" name="password" 
-                  value={this.state.pwd} 
+                    value={this.state.password} 
                   onChange={this.onChange} />
                 </div>
                 <div className="form-group">
                   <input type="password" className="form-control form-control-lg" placeholder="Confirm Password" name="password2" 
-                  value={this.state.pwd2} 
+                    value={this.state.password2} 
                   onChange={this.onChange}  />
                 </div>
                 <input type="submit" className="btn btn-info btn-block mt-4" />
