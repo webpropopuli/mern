@@ -1,5 +1,5 @@
 {
-  "name": "wpp-connect",
+  "name": "devconnect-server",
   "version": "2.0.0",
   "description": "wpp Social app",
   "main": "server.js",
@@ -8,7 +8,8 @@
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\" ",
+    "inst": "concurrently \"npm i\" \"npm i --prefix client\" "
   },
   "author": "David Marlowe",
   "license": "MIT",
